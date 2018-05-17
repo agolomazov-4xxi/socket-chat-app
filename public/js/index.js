@@ -1,12 +1,6 @@
 var socket = io();
 socket.on('connect', function() {
   console.log('Connected to server');
-
-  socket.emit('createMessage', {
-    from: 'Anton',
-    text: 'Yup, that works for me ' + new Date().getDate(),
-    createdAt: 45493022,
-  });
 });
 
 socket.on('disconnect', function() {
@@ -15,8 +9,22 @@ socket.on('disconnect', function() {
 
 socket.on('newMessage', function(message) {
   console.log('newMessage', message);
+  const li = jQuery('<li></li>');
+  li.text(`${message.from}: ${message.text}`);
+  const list = jQuery('#messages');
+  list.append(li);
 });
 
-socket.on('createMessage', function(message) {
-  console.log('createMessage', message);
+jQuery('#message-form').on('submit', function(e) {
+  e.preventDefault();
+  const input = jQuery('[name=message]');
+  socket.emit(
+    'createMessage',
+    {
+      from: 'User',
+      text: input.val(),
+    },
+    function() {}
+  );
+  input.val('');
 });
