@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "test": "mocha server/**/*.js",
+    "test-watch": "nodemon --exec 'yarn run test'"
   },
   "engines": {
     "node": "8.5.0"
@@ -16,5 +18,9 @@
     "express": "^4.16.3",
     "nodemon": "^1.17.4",
     "socket.io": "^2.1.0"
+  },
+  "devDependencies": {
+    "expect": "1.20.2",
+    "mocha": "3.0.2"
   }
 }
