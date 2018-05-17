@@ -22,7 +22,7 @@ io.on('connection', socket => {
 
   socket.on('createMessage', ({from, text, createdAt}) => {
     console.log('createMessage', from, text, createdAt);
-    io.emit('newMessage', {
+    io.emit('createMessage', {
       from: from,
       text: text,
       createdAt: 12303120,
