@@ -4,7 +4,7 @@ socket.on('connect', function() {
 
   socket.emit('createMessage', {
     from: 'Anton',
-    text: 'Yup, that works for me',
+    text: 'Yup, that works for me ' + new Date().getDate(),
     createdAt: 45493022,
   });
 });
