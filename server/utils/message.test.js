@@ -7,7 +7,6 @@ describe('generateMessage', () => {
 		const text = 'Some message';
 		const message = generateMessage(from, text);
 
-		expect(message.createdAt).toBeA('number');
 		expect(message).toInclude({
 			from,
 			text,
@@ -23,7 +22,6 @@ describe('generateLocationMessage', () => {
 		const url = `https://www.google.com/maps?q=15,19`;
 
 		const message = generateLocationMessage(from, lat, long);
-		expect(message.createdAt).toBeA('number');
 		expect(message.url).toEqual(url);
 		expect(message).toInclude({ from, url });
 	});
